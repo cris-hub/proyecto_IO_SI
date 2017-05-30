@@ -4,7 +4,8 @@
   "description": "Custom boilerplate for HTML5 projects, includes Boostrap, jQuery, Gulp, Express, Brower-sync and more.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo 'Funciona perfectamente'",
+    "gitPush": "git push origin master && git push origin master --tags"
   },
   "repository": {
     "type": "git",
