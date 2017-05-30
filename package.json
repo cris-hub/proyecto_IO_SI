@@ -1,6 +1,6 @@
 {
   "name": "magroplate_html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom boilerplate for HTML5 projects, includes Boostrap, jQuery, Gulp, Express, Brower-sync and more.",
   "main": "index.js",
   "scripts": {
