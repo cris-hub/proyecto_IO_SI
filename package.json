@@ -4,15 +4,16 @@
   "description": "Custom boilerplate for HTML5 projects, includes Boostrap, jQuery, Gulp, Express, Brower-sync and more.",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'Funciona perfectamente'",
+    "test": "node index",
     "gitPush": "git push origin master && git push origin master --tags",
     "i_jQuery": "cp node_modules/jquery/dist/jquery.min.js www/js",
     "i_glyphicons": "cp -r node_modules/bootstrap-sass/assets/fonts/ www/fonts",
     "i_bootstrap": "cp node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js www/js",
     "compilar": "npm run i_jQuery && npm run i_bootstrap && npm run i_glyphicons",
     "runGulp": "gulp watch",
-    "runSync": "browser-sync start --server 'www' --files 'www/*.html, www/js/*.js, www/css/*.css'",
-    "start": "npm run runGulp & npm run runSync"
+    "runSync": "browser-sync start --server 'www' --files 'www/**/*.html, www/js/*.js, www/css/*.css'",
+    "start": "npm run runGulp & npm run runSync",
+    "instalar": "npm install"
   },
   "repository": {
     "type": "git",
