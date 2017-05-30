@@ -1,0 +1,32 @@
+{
+  "name": "magroplate_html",
+  "version": "1.0.0",
+  "description": "Custom boilerplate for HTML5 projects, includes Boostrap, jQuery, Gulp, Express, Brower-sync and more.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmagrosoto/magroplate_html.git"
+  },
+  "keywords": [
+    "fmagrosoto",
+    "digitae",
+    "boilerplate",
+    "html5",
+    "template"
+  ],
+  "author": "Fernando Magrosoto V. <fmagrosoto@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fmagrosoto/magroplate_html/issues"
+  },
+  "homepage": "https://github.com/fmagrosoto/magroplate_html#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  }
+}
