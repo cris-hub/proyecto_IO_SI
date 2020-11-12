@@ -1,6 +1,4 @@
 
-
-console.log("Funciona de 10!");
 $(document).ready(function(){
 
 
@@ -179,13 +177,6 @@ function solucionar_tabla(){
 
 	}
 
-	for(var i=0; i<my_liste.length; i++) {
-    //Bucle que recorre el array que está en la posición i
-	    for(var j=0; j<my_liste[i].length; j++) {
-	        console.log(my_liste[i][j]);
-	    }
-	}
-
 
 	// Obtener el metodo a resolver
 		var metodo = document.getElementById('metodos').value;
@@ -202,12 +193,11 @@ function solucionar_tabla(){
 		    break;
 		  case 'pesimista':
 		    console.log('Solucionar por '+metodo);
-<<<<<<< HEAD
-=======
+
           //ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
         let numMenor = solucionarPesimista(my_liste);
         $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + numMenor + '</div> </div>')
->>>>>>> 524c2aa7ef3535e09075d334ac4a13368914f41e
+
 		    break;
 		  case 'hurwicz':
 		    console.log('Solucionar por '+metodo);
@@ -215,6 +205,7 @@ function solucionar_tabla(){
 		    break;
 		  case 'savage':
 		    console.log('Solucionar por '+metodo);
+		let savage = solucionarSavage(my_liste);
 		   		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
 		    break;
 		  default:
