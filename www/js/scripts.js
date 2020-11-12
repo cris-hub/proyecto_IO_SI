@@ -5,7 +5,24 @@ $(document).ready(function(){
 });
 
 function genera_tabla(){
+		//verifica si ya hay una tabla y la borra
+		tablaExiste = document.getElementById('tablita');	
+		if (!tablaExiste){
 
+		} else {
+			padre = tablaExiste.parentNode;
+			padre.removeChild(tablaExiste);
+		}
+		//verifica el texto descriptivo de la tabla existe
+		tituloExiste = document.getElementById('descripcionTabla');	
+		if (!tituloExiste){
+
+		} else {
+			padre = tituloExiste.parentNode;
+			padre.removeChild(tituloExiste);
+		}
+		// Obtener el metodo a resolver
+		var metodo = document.getElementById('metodos').value;
 		// obtiene las dimensiones de la tabla con los input
 		var numFilas = document.getElementById('num_filas').value;
 		var numColumnas = document.getElementById('num_columnas').value;
@@ -25,9 +42,19 @@ function genera_tabla(){
 		var body = document.getElementById("Tabla");
 		var tabla   = document.createElement("table");
 	  	var tblBody = document.createElement("tbody");
+	  	//crea un titulo para la matriz
+	  	var texto = document.createElement("h3");
+	  	texto.id = "descripcionTabla";
+	  	texto.style.textAlign = "center";
+
+	  	var caracteristicaMatriz="";
 
 	  	// Crea un elemento <table> y un elemento <tbody>
 	  var tabla = document.createElement("table");
+	  tabla.id = "tablita";
+	  tabla.className = "table";
+	  tabla.style.marginTop ="0.5in";
+
 	  var tblBody = document.createElement("tbody");
 	  // Crea las celdas dependiendo del estado del boleano crea o no valores random
 
@@ -45,13 +72,13 @@ function genera_tabla(){
 			      var textoCelda = document.createTextNode(Math.trunc((Math.random() * (1000 - 0) + 0)));
 			      celda.appendChild(textoCelda);
 			      hilera.appendChild(celda);
+			      caracteristicaMatriz = "Su Matriz con valores Aleatorios entre 0 y 1000, resolver por: "+ metodo;
 			    }
 		 
 		    // agrega la hilera al final de la tabla (al final del elemento tblbody)
 		    tblBody.appendChild(hilera);
 		  }
 	  }else{
-
 	  	//solicita ingresar valores
 		  	for (var i = 0; i < numFilas; i++) {
 		    // Crea las hileras de la tabla añadiendoles un input
@@ -63,10 +90,11 @@ function genera_tabla(){
 			      // de la hilera de la tabla
 			      var celda = document.createElement("td");
 			      var input = document.createElement("input");
-					input.type = "text";
-					input.className = "css-class-name"; // set the CSS class
+					input.className = "form-control"; // set the CSS class
+					input.id="valorCelda";
 			      celda.appendChild(input);
 			      hilera.appendChild(celda);
+			      caracteristicaMatriz = "Ingrese los valores de la matriz, resolver por: "+ metodo;
 			    }
 		    // agrega la hilera al final de la tabla (al final del elemento tblbody)
 		    tblBody.appendChild(hilera);
@@ -75,9 +103,18 @@ function genera_tabla(){
 	  // posiciona el <tbody> debajo del elemento <table>
 	  tabla.appendChild(tblBody);
 	  // appends <table> into <body>
-	  body.appendChild(tabla);
+	  //muestra el titulo en la matriz
+ 	var textoTitulo = document.createTextNode(caracteristicaMatriz);
+	texto.appendChild(textoTitulo);
+
+	body.appendChild(texto)
+
+	body.appendChild(tabla);
+
+	 
+	  
 	  // modifica el atributo "border" de la tabla y lo fija a "2";
-	  tabla.setAttribute("border", "2");
+	tabla.setAttribute("border", "2");
 
 
 	}
