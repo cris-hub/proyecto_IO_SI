@@ -117,4 +117,20 @@ function genera_tabla(){
 	tabla.setAttribute("border", "2");
 
 
-	}
+	//guardar en una matriz los valores de la tabla creada para generar los metodos
+
+myData = document.getElementById('tablita').rows
+        //ESTA ES LA LISTA QUE GUARDA TODO LOS DATOS
+         my_liste = []
+            for (var i = 0; i < myData.length; i++) {
+                el = myData[i].children
+                my_el = []
+            for (var j = 0; j < el.length; j++) {
+                my_el.push(el[j].innerText);
+            }
+        my_liste.push(my_el)
+
+    }
+
+
+}
