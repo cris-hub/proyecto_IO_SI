@@ -1,12 +1,12 @@
 console.log("Funciona de 10!");
 $(document).ready(function(){
 
-	  
+
 });
 
 function genera_tabla(){
 		//verifica si ya hay una tabla y la borra
-		tablaExiste = document.getElementById('tablita');	
+		tablaExiste = document.getElementById('tablita');
 		if (!tablaExiste){
 
 		} else {
@@ -14,7 +14,7 @@ function genera_tabla(){
 			padre.removeChild(tablaExiste);
 		}
 		//verifica el texto descriptivo de la tabla existe
-		tituloExiste = document.getElementById('descripcionTabla');	
+		tituloExiste = document.getElementById('descripcionTabla');
 		if (!tituloExiste){
 
 		} else {
@@ -23,7 +23,7 @@ function genera_tabla(){
 		}
 
 		//verifica el boton para solucionar la matriz
-		botonSol = document.getElementById('botonSolucionar');	
+		botonSol = document.getElementById('botonSolucionar');
 		if (!botonSol){
 
 		} else {
@@ -87,7 +87,7 @@ function genera_tabla(){
 		  	for (var i = 0; i < numFilas; i++) {
 		    // Crea las hileras de la tabla
 		    var hilera = document.createElement("tr");
-		 
+
 			    for (var j = 0; j < numColumnas; j++) {
 			      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
 			      // texto sea el contenido de <td>, ubica el elemento <td> al final
@@ -98,7 +98,7 @@ function genera_tabla(){
 			      hilera.appendChild(celda);
 			      caracteristicaMatriz = "Su Matriz con valores Aleatorios entre 0 y 1000, resolver por: "+ metodo;
 			    }
-		 
+
 		    // agrega la hilera al final de la tabla (al final del elemento tblbody)
 		    tblBody.appendChild(hilera);
 		  }
@@ -107,7 +107,7 @@ function genera_tabla(){
 		  	for (var i = 0; i < numFilas; i++) {
 		    // Crea las hileras de la tabla añadiendoles un input
 		    var hilera = document.createElement("tr");
-		 
+
 			    for (var j = 0; j < numColumnas; j++) {
 			      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
 			      // texto sea el contenido de <td>, ubica el elemento <td> al final
@@ -139,9 +139,9 @@ function genera_tabla(){
 
 	body.appendChild(contenedorBotton);
 
-	 
 
-	
+
+
 
 	  // modifica el atributo "border" de la tabla y lo fija a "2";
 	tabla.setAttribute("border", "2");
@@ -182,7 +182,7 @@ function solucionar_tabla(){
 	        console.log(my_liste[i][j]);
 	    }
 	}
-	
+
 
 	// Obtener el metodo a resolver
 		var metodo = document.getElementById('metodos').value;
@@ -193,11 +193,15 @@ function solucionar_tabla(){
 		    break;
 		  case 'optimista':
 		    console.log('Solucionar por '+metodo);
-				//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+        //ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+        let numMayor = solucionarOptimista(my_liste);
+        $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + numMayor + '</div> </div>')
 		    break;
 		  case 'pesimista':
 		    console.log('Solucionar por '+metodo);
-		  		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+          //ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+        let numMenor = solucionarPesimista(my_liste);
+        $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + numMenor + '</div> </div>')
 		    break;
 		  case 'hurwicz':
 		    console.log('Solucionar por '+metodo);

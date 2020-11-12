@@ -1,20 +1,14 @@
-let columnas = 10;
-let filas = 10
 
-
-let mapData = new Map();
-let arrayData = new Array();
-
-for (let indexColumna = 0; indexColumna < columnas; indexColumna++) {
-  arrayData.push(Math.random())
-  for (let indexFila = 0; indexFila < filas; indexFila++) {
-    mapData.set(indexFila,arrayData)
-  }
+function solucionarOptimista(my_liste){
+ console.log(my_liste)
+ let numMayor = 0;
+ my_liste.forEach(elementList => {
+  elementList.forEach(element => {
+    if (element > numMayor) {
+      numMayor = element;
+    }
+  });
+ });
+ console.log( "numero mayor" + numMayor);
+ return numMayor;
 }
-
-
-
-
-
-console.log(mapData)
-console.log(arrayData)
