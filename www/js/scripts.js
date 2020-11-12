@@ -21,6 +21,16 @@ function genera_tabla(){
 			padre = tituloExiste.parentNode;
 			padre.removeChild(tituloExiste);
 		}
+
+		//verifica el boton para solucionar la matriz
+		botonSol = document.getElementById('botonSolucionar');	
+		if (!botonSol){
+
+		} else {
+			padre = botonSol.parentNode;
+			padre.removeChild(botonSol);
+		}
+
 		// Obtener el metodo a resolver
 		var metodo = document.getElementById('metodos').value;
 		// obtiene las dimensiones de la tabla con los input
@@ -58,6 +68,20 @@ function genera_tabla(){
 	  var tblBody = document.createElement("tbody");
 	  // Crea las celdas dependiendo del estado del boleano crea o no valores random
 
+	  //Crea un boton para solucuionar la matriz
+	var contenedorBotton = document.createElement("div");
+	contenedorBotton.className ="col-md-12";
+	contenedorBotton.id ="botonSolucionar";
+	var bottonSolucionar = document.createElement("button");
+	bottonSolucionar.className ="btn btn-alert";
+	//La funcion del boton para solucionar la matriz
+	bottonSolucionar.onclick = function(){
+    	solucionar_tabla();
+  	};
+	var textoboton = document.createTextNode("Solucionar");
+	bottonSolucionar.appendChild(textoboton);
+
+
 	  if(aleatorio){
 	  	//valores random desde 0 hasta 1000
 		  	for (var i = 0; i < numFilas; i++) {
@@ -89,10 +113,11 @@ function genera_tabla(){
 			      // texto sea el contenido de <td>, ubica el elemento <td> al final
 			      // de la hilera de la tabla
 			      var celda = document.createElement("td");
-			      var input = document.createElement("input");
-					input.className = "form-control"; // set the CSS class
-					input.id="valorCelda";
-			      celda.appendChild(input);
+			      celda.contentEditable="true";
+			      //var input = document.createElement("input");
+				//	input.className = "form-control"; // set the CSS class
+				//	input.id="valorCelda";
+			      //celda.appendChild(input);
 			      hilera.appendChild(celda);
 			      caracteristicaMatriz = "Ingrese los valores de la matriz, resolver por: "+ metodo;
 			    }
@@ -110,27 +135,79 @@ function genera_tabla(){
 	body.appendChild(texto)
 
 	body.appendChild(tabla);
+	contenedorBotton.appendChild(bottonSolucionar);
+
+	body.appendChild(contenedorBotton);
 
 	 
-	  
+
+	
+
 	  // modifica el atributo "border" de la tabla y lo fija a "2";
 	tabla.setAttribute("border", "2");
 
+}
 
-	//guardar en una matriz los valores de la tabla creada para generar los metodos
+function solucionar_tabla(){
 
-myData = document.getElementById('tablita').rows
-        //ESTA ES LA LISTA QUE GUARDA TODO LOS DATOS
-         my_liste = []
-            for (var i = 0; i < myData.length; i++) {
-                el = myData[i].children
-                my_el = []
-            for (var j = 0; j < el.length; j++) {
-                my_el.push(el[j].innerText);
-            }
-        my_liste.push(my_el)
+	var numFilas = document.getElementById('num_filas').value;
+		var numColumnas = document.getElementById('num_columnas').value;
 
-    }
+		if(numFilas==""){
+			alert("Ingrese todos los campos");
+		}
+		if(numColumnas==""){
+			alert("Ingrese todos los campos");
+	}
 
+	//en este array se guardaran los datos de la tabla
+	my_liste = []
 
+	//obtener filas de la tabla
+	myData = document.getElementById('tablita').rows
+	//llenar arreglo con informacion de la tabla:
+		for (var i = 0; i < myData.length; i++) {
+		            el = myData[i].children
+		            my_el = []
+		        for (var j = 0; j < el.length; j++) {
+		                my_el.push(el[j].innerText);
+		            }
+		my_liste.push(my_el)
+
+	}
+
+	for(var i=0; i<my_liste.length; i++) {
+    //Bucle que recorre el array que está en la posición i
+	    for(var j=0; j<my_liste[i].length; j++) {
+	        console.log(my_liste[i][j]);
+	    }
+	}
+	
+
+	// Obtener el metodo a resolver
+		var metodo = document.getElementById('metodos').value;
+		switch (metodo) {
+		  case 'modelo de laplace':
+		    console.log('Solucionar por '+metodo);
+		    	//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+		    break;
+		  case 'optimista':
+		    console.log('Solucionar por '+metodo);
+				//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+		    break;
+		  case 'pesimista':
+		    console.log('Solucionar por '+metodo);
+		  		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+		    break;
+		  case 'hurwicz':
+		    console.log('Solucionar por '+metodo);
+		    	//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+		    break;
+		  case 'savage':
+		    console.log('Solucionar por '+metodo);
+		   		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+		    break;
+		  default:
+		    alert("Seleccione un metodo");
+	}
 }
