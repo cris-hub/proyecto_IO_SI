@@ -56,6 +56,17 @@
               </div>
               <div class="col-md-3">
                 <button class="btn btn-success" onclick="genera_tabla()">Click me </button>
+                <div class="form-group">
+                  <label for="metodos">Example multiple select</label>
+                  <select class="form-control" id="metodos">
+                    <option>modelo de laplace</option>
+                    <option>optimista</option>
+                    <option>pesimista</option>
+                    <option>hurwicz</option>
+                    <option>savage</option>
+                  </select>
+                </div>
+
               </div>
             </div>
             <div class="row">
@@ -78,6 +89,14 @@
         </div>
       </div>
     </div>
+
+    <script src="www/js/metodos-io/hurwics.js" ></script>
+    <script src="www/js/metodos-io/modelo-laplace.js" ></script>
+    <script src="www/js/metodos-io/optimista.js" ></script>
+    <script src="www/js/metodos-io/pesimista.js" ></script>
+    <script src="www/js/metodos-io/savage.js" ></script>
+
+
     <script src="./js/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/bootstrap.min.js"></script>
