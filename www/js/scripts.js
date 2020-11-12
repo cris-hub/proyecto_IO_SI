@@ -1,8 +1,9 @@
-console.log("Funciona de 10!");
+
 $(document).ready(function(){
 
 
 });
+
 
 function genera_tabla(){
 		//verifica si ya hay una tabla y la borra
@@ -189,8 +190,8 @@ function solucionar_tabla(){
 	}
 
 	//en este array se guardaran los datos de la tabla
+	
 	my_liste = []
-
 	//obtener filas de la tabla
 	myData = document.getElementById('tablita').rows
 	//llenar arreglo con informacion de la tabla:
@@ -202,13 +203,6 @@ function solucionar_tabla(){
 		            }
 		my_liste.push(my_el)
 
-	}
-
-	for(var i=0; i<my_liste.length; i++) {
-    //Bucle que recorre el array que está en la posición i
-	    for(var j=0; j<my_liste[i].length; j++) {
-	        console.log(my_liste[i][j]);
-	    }
 	}
 
 
@@ -230,9 +224,11 @@ function solucionar_tabla(){
 		    break;
 		  case 'pesimista':
 		    console.log('Solucionar por '+metodo);
+
           //ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
         let numMenor = solucionarPesimista(my_liste);
         $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + numMenor + '</div> </div>')
+
 		    break;
 		  case 'hurwicz':
         console.log('Solucionar por '+metodo);
@@ -241,9 +237,11 @@ function solucionar_tabla(){
 		    break;
 		  case 'savage':
 		    console.log('Solucionar por '+metodo);
+		let savage = solucionarSavage(my_liste);
 		   		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
 		    break;
 		  default:
 		    alert("Seleccione un metodo");
 	}
+
 }
