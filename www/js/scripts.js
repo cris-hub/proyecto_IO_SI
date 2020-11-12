@@ -148,6 +148,34 @@ function genera_tabla(){
 
 }
 
+function createTable(list){
+  var tabla = document.createElement("table");
+  tabla.id = "tablita";
+  tabla.className = "table";
+  tabla.style.marginTop ="0.5in";
+  var body = document.getElementById("Tabla");
+  var tblBody = document.createElement("tbody");
+	  	//valores random desde 0 hasta 1000
+      for (var i = 0; i < list.length; i++) {
+		    // Crea las hileras de la tabla
+		    var hilera = document.createElement("tr");
+
+			    for (var j = 0; j < list[i].length; j++) {
+			      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+			      // texto sea el contenido de <td>, ubica el elemento <td> al final
+			      // de la hilera de la tabla
+			      var celda = document.createElement("td");
+			      var textoCelda = document.createTextNode(list[i][j]);
+			      celda.appendChild(textoCelda);
+			      hilera.appendChild(celda);
+			    }
+
+		    // agrega la hilera al final de la tabla (al final del elemento tblbody)
+		    tblBody.appendChild(hilera);
+      }
+      tabla.appendChild(tblBody);
+      body.appendChild(tabla);
+}
 function solucionar_tabla(){
 
 	var numFilas = document.getElementById('num_filas').value;
@@ -188,7 +216,10 @@ function solucionar_tabla(){
 		var metodo = document.getElementById('metodos').value;
 		switch (metodo) {
 		  case 'modelo de laplace':
-		    console.log('Solucionar por '+metodo);
+        console.log('Solucionar por '+metodo);
+        let sumValores = solucionarModeloLaplace(my_liste);
+        this.createTable(my_liste)
+        $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + sumValores + '</div> </div>')
 		    	//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
 		    break;
 		  case 'optimista':
@@ -204,7 +235,8 @@ function solucionar_tabla(){
         $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + numMenor + '</div> </div>')
 		    break;
 		  case 'hurwicz':
-		    console.log('Solucionar por '+metodo);
+        console.log('Solucionar por '+metodo);
+
 		    	//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
 		    break;
 		  case 'savage':
