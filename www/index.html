@@ -42,17 +42,29 @@
             </div>
 
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="num_filas">numero de filas</label>
                 <input id="num_filas" type="text" />
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="num_columnas">numero de columnas</label>
                 <input id="num_columnas" type="text" />
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="isRandom">numeros al azar</label>
                 <input id="isRandom" type="checkbox" checked data-toggle="toggle">
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="metodos">Example multiple select</label>
+                  <select class="form-control" id="metodos">
+                    <option>modelo de laplace</option>
+                    <option>optimista</option>
+                    <option>pesimista</option>
+                    <option>hurwicz</option>
+                    <option>savage</option>
+                  </select>
+                </div>
               </div>
             </div>
 
@@ -77,6 +89,13 @@
         </div>
       </div>
     </div>
+
+
+    <script src="www/js/metodos-io/hurwics.js" ></script>
+    <script src="www/js/metodos-io/modelo-laplace.js" ></script>
+    <script src="www/js/metodos-io/optimista.js" ></script>
+    <script src="www/js/metodos-io/pesimista.js" ></script>
+    <script src="www/js/metodos-io/savage.js" ></script>
 
     <script src="./js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
