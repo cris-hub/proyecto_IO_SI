@@ -1,8 +1,11 @@
+
+
 console.log("Funciona de 10!");
 $(document).ready(function(){
 
 	  
 });
+
 
 function genera_tabla(){
 		//verifica si ya hay una tabla y la borra
@@ -161,8 +164,8 @@ function solucionar_tabla(){
 	}
 
 	//en este array se guardaran los datos de la tabla
+	
 	my_liste = []
-
 	//obtener filas de la tabla
 	myData = document.getElementById('tablita').rows
 	//llenar arreglo con informacion de la tabla:
@@ -197,7 +200,6 @@ function solucionar_tabla(){
 		    break;
 		  case 'pesimista':
 		    console.log('Solucionar por '+metodo);
-		  		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
 		    break;
 		  case 'hurwicz':
 		    console.log('Solucionar por '+metodo);
@@ -210,4 +212,5 @@ function solucionar_tabla(){
 		  default:
 		    alert("Seleccione un metodo");
 	}
+
 }
