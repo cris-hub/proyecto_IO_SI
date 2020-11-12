@@ -1,27 +1,31 @@
 console.log("Funciona de 10!");
 $(document).ready(function(){
 
-	   function genera_tabla(){
-	   	
-		var numFilas = document.getElementById(num_filas);
-		var numColumnas = document.getElementById(num_);
+	  
+});
 
-		var array = new Array[numFilasparseInt(num_filas)][numFilasparseInt(num_columnas)];
+function genera_tabla(){
+		var numFilas = document.getElementById('num_filas').value;
+		var numColumnas = document.getElementById('num_columnas').value;
+
+		console.log(numFilas);
+		console.log(numColumnas);
 
 	  // Crea un elemento <table> y un elemento <tbody>
+
+		var body = document.getElementById("Tabla");
 		var tabla   = document.createElement("table");
 	  	var tblBody = document.createElement("tbody");
 
 	  	// Crea un elemento <table> y un elemento <tbody>
-	  var tabla   = document.createElement("table");
+	  var tabla = document.createElement("table");
 	  var tblBody = document.createElement("tbody");
-	 
 	  // Crea las celdas
-	  for (var i = 0; i < 2; i++) {
+	  for (var i = 0; i < numFilas; i++) {
 	    // Crea las hileras de la tabla
 	    var hilera = document.createElement("tr");
 	 
-	    for (var j = 0; j < 2; j++) {
+	    for (var j = 0; j < numColumnas; j++) {
 	      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
 	      // texto sea el contenido de <td>, ubica el elemento <td> al final
 	      // de la hilera de la tabla
@@ -42,5 +46,3 @@ $(document).ready(function(){
 	  // modifica el atributo "border" de la tabla y lo fija a "2";
 	  tabla.setAttribute("border", "2");
 	}
-
-});
