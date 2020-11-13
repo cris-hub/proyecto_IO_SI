@@ -237,7 +237,8 @@ function solucionar_tabla(){
 		    break;
 		  case 'savage':
 		    console.log('Solucionar por '+metodo);
-		let savage = solucionarSavage(my_liste);
+			var savage = solucionarSavage(my_liste);
+			this.createTable(my_liste);
 		   		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
 		    break;
 		  default:
