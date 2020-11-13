@@ -150,6 +150,13 @@ function genera_tabla(){
 }
 
 function createTable(list){
+  tablaExiste = document.getElementById('tablita');
+  if (!tablaExiste){
+
+  } else {
+    padre = tablaExiste.parentNode;
+    padre.removeChild(tablaExiste);
+  }
   var tabla = document.createElement("table");
   tabla.id = "tablita";
   tabla.className = "table";
@@ -190,7 +197,7 @@ function solucionar_tabla(){
 	}
 
 	//en este array se guardaran los datos de la tabla
-	
+
 	my_liste = []
 	//obtener filas de la tabla
 	myData = document.getElementById('tablita').rows
