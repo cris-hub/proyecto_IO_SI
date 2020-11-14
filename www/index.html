@@ -12,9 +12,6 @@
     <meta name="description" content="Templete para HTML5" />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-
-
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,63 +32,116 @@
         <div class="col-md-12">
           <div>
             <div class="row">
-              <div class="col-md-12">
-                <h2>Cree su matriz</h2>
-              </div>
-            </div>
-
-            <div class="row">
               <div class="col-md-3">
                 <label for="num_filas">numero de filas</label>
-                <input id="num_filas" type="text" />
+                <input id="num_filas" type="text" class="form-control" />
               </div>
               <div class="col-md-3">
                 <label for="num_columnas">numero de columnas</label>
-                <input id="num_columnas" type="text" />
+                <input id="num_columnas" type="text" class="form-control" />
               </div>
               <div class="col-md-3">
                 <label for="isRandom">numeros al azar</label>
-                <input id="isRandom" type="checkbox" checked data-toggle="toggle">
+                <input
+                  id="isRandom"
+                  type="checkbox"
+                  checked
+                  data-toggle="toggle"
+                  class="form-control"
+                />
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="metodos">Seleccione el Metodo de Decision</label>
-                  <select class="form-control" id="metodos">
-                    <option>modelo de laplace</option>
-                    <option>optimista</option>
-                    <option>pesimista</option>
-                    <option>hurwicz</option>
-                    <option>savage</option>
+                  <select
+                    onchange="onSelectChange(event)"
+                    class="form-control"
+                    id="metodos"
+                  >
+                    <option value="modelo de laplace">modelo de laplace</option>
+                    <option value="optimista">optimista</option>
+                    <option value="pesimista">pesimista</option>
+                    <option value="hurwicz">hurwicz</option>
+                    <option value="savage">savage</option>
                   </select>
                 </div>
-
               </div>
             </div>
-            <div class="col-md-12">
-              <button class="btn btn-success" onclick="genera_tabla()">Generar</button>
+            <div id="containerCcoeficionte" class="row">
+              <div class="col-md-12">
+                <label for="coeficionte"></label>
+                <input
+                  id="coeficionte"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value="0"
+                  maxlength="1"
+                  type="number"
+                  class="form-control"
+                />
+              </div>
             </div>
-            <div id="Tabla" >
+            <hr />
+            <div class="row">
+              <div class="col-md-6">
+                <button
+                  class="btn btn-primary btn-lg btn-block"
+                  onclick="genera_tabla()"
+                >
+                  Generar
+                </button>
+              </div>
+              <div class="col-md-6">
+                <button
+                  id="botonSolucionar"
+                  class="btn btn-default btn-lg btn-block"
+                  onclick="solucionar_tabla()"
+                >
+                  Solucionar
+                </button>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-md-12">
+                <div id="tablas">
+                  <div class="row">
+                    <h3>Problema</h3>
+                    <div class="col-md-12 table-responsive">
+                      <table id="tablaProblema" class="table table-striped  table-bordered">
+                        <tbody id="tablaProblemaBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
 
+                  <div class="row">
+                    <h3>Solucion</h3>
+                    <div class="col-md-12 table-responsive">
+                      <table id="tableSolucion" class="table table-striped  table-bordered">
+                        <tbody id="tableSolucionBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div id="solucion" >
 
-            </div>
+            <div id="solucion"></div>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="./js/metodos-io/hurwics.js" ></script>
-    <script src="./js/metodos-io/modelo-laplace.js" ></script>
-    <script src="./js/metodos-io/optimista.js" ></script>
-    <script src="./js/metodos-io/pesimista.js" ></script>
-    <script src="./js/metodos-io/savage.js" ></script>
-
+    <script src="./js/metodos-io/hurwics.js"></script>
+    <script src="./js/metodos-io/modelo-laplace.js"></script>
+    <script src="./js/metodos-io/optimista.js"></script>
+    <script src="./js/metodos-io/pesimista.js"></script>
+    <script src="./js/metodos-io/savage.js"></script>
 
     <script src="./js/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.min.js"></script>
   </body>
-
 </html>

@@ -1,45 +1,30 @@
 
 $(document).ready(function(){
-
-
+  init()
 });
+function init(){
+  $("#containerCcoeficionte").hide()
+  $("#tablas").hide()
+  $("#coeficionte").attr({
+    "max" : 1,
+    "min" : 0
+ });
+};
 
+function onSelectChange(event){
+event.target.value == "hurwicz" ? $("#containerCcoeficionte").show() : $("#containerCcoeficionte").hide()
+}
 
 function genera_tabla(){
-		//verifica si ya hay una tabla y la borra
-		tablaExiste = document.getElementById('tablita');
-		if (!tablaExiste){
-
-		} else {
-			padre = tablaExiste.parentNode;
-			padre.removeChild(tablaExiste);
-		}
-		//verifica el texto descriptivo de la tabla existe
-		tituloExiste = document.getElementById('descripcionTabla');
-		if (!tituloExiste){
-
-		} else {
-			padre = tituloExiste.parentNode;
-			padre.removeChild(tituloExiste);
-		}
-
-		//verifica el boton para solucionar la matriz
-		botonSol = document.getElementById('botonSolucionar');
-		if (!botonSol){
-
-		} else {
-			padre = botonSol.parentNode;
-			padre.removeChild(botonSol);
-		}
-
-		// Obtener el metodo a resolver
-		var metodo = document.getElementById('metodos').value;
+  $("#tablas").show()
 		// obtiene las dimensiones de la tabla con los input
 		var numFilas = document.getElementById('num_filas').value;
-		var numColumnas = document.getElementById('num_columnas').value;
+    var numColumnas = document.getElementById('num_columnas').value;
+
 		// obtiene el estado del checkbox
 		var checkBox = document.getElementById("isRandom");
-		//crea un boleano
+    //crea un boleano
+
 		var aleatorio = new Boolean(false);
 		//Modifica el boleano a partir del estado del checkbox
 		if (checkBox.checked == true){
@@ -47,42 +32,7 @@ function genera_tabla(){
 		  } else {
 		    var aleatorio = false;
 		  }
-
-	  // Crea un elemento <table> y un elemento <tbody>
-
-		var body = document.getElementById("Tabla");
-		var tabla   = document.createElement("table");
-	  	var tblBody = document.createElement("tbody");
-	  	//crea un titulo para la matriz
-	  	var texto = document.createElement("h3");
-	  	texto.id = "descripcionTabla";
-	  	texto.style.textAlign = "center";
-
-	  	var caracteristicaMatriz="";
-
-	  	// Crea un elemento <table> y un elemento <tbody>
-	  var tabla = document.createElement("table");
-	  tabla.id = "tablita";
-	  tabla.className = "table";
-	  tabla.style.marginTop ="0.5in";
-
-	  var tblBody = document.createElement("tbody");
-	  // Crea las celdas dependiendo del estado del boleano crea o no valores random
-
-	  //Crea un boton para solucuionar la matriz
-	var contenedorBotton = document.createElement("div");
-	contenedorBotton.className ="col-md-12";
-	contenedorBotton.id ="botonSolucionar";
-	var bottonSolucionar = document.createElement("button");
-	bottonSolucionar.className ="btn btn-alert";
-	//La funcion del boton para solucionar la matriz
-	bottonSolucionar.onclick = function(){
-    	solucionar_tabla();
-  	};
-	var textoboton = document.createTextNode("Solucionar");
-	bottonSolucionar.appendChild(textoboton);
-
-
+  $("#tablaProblemaBody").html("")
 	  if(aleatorio){
 	  	//valores random desde 0 hasta 1000
 		  	for (var i = 0; i < numFilas; i++) {
@@ -97,11 +47,11 @@ function genera_tabla(){
 			      var textoCelda = document.createTextNode(Math.trunc((Math.random() * (1000 - 0) + 0)));
 			      celda.appendChild(textoCelda);
 			      hilera.appendChild(celda);
-			      caracteristicaMatriz = "Su Matriz con valores Aleatorios entre 0 y 1000, resolver por: "+ metodo;
 			    }
 
-		    // agrega la hilera al final de la tabla (al final del elemento tblbody)
-		    tblBody.appendChild(hilera);
+        // agrega la hilera al final de la tabla (al final del elemento tblbody)
+        $("#tablaProblemaBody").append(hilera).appendTo("tablaProblema").appendTo("tablas")
+
 		  }
 	  }else{
 	  	//solicita ingresar valores
@@ -120,50 +70,17 @@ function genera_tabla(){
 				//	input.id="valorCelda";
 			      //celda.appendChild(input);
 			      hilera.appendChild(celda);
-			      caracteristicaMatriz = "Ingrese los valores de la matriz, resolver por: "+ metodo;
 			    }
 		    // agrega la hilera al final de la tabla (al final del elemento tblbody)
-		    tblBody.appendChild(hilera);
+        $("#tablaProblemaBody").append(hilera).appendTo("tablaProblema").appendTo("tablas")
 		  	}
 	  }
-	  // posiciona el <tbody> debajo del elemento <table>
-	  tabla.appendChild(tblBody);
-	  // appends <table> into <body>
-	  //muestra el titulo en la matriz
- 	var textoTitulo = document.createTextNode(caracteristicaMatriz);
-	texto.appendChild(textoTitulo);
-
-	body.appendChild(texto)
-
-	body.appendChild(tabla);
-	contenedorBotton.appendChild(bottonSolucionar);
-
-	body.appendChild(contenedorBotton);
-
-
-
-
-
-	  // modifica el atributo "border" de la tabla y lo fija a "2";
-	tabla.setAttribute("border", "2");
 
 }
 
 function createTable(list){
-  tablaExiste = document.getElementById('tablita');
-  if (!tablaExiste){
-
-  } else {
-    padre = tablaExiste.parentNode;
-    padre.removeChild(tablaExiste);
-  }
-  var tabla = document.createElement("table");
-  tabla.id = "tablita";
-  tabla.className = "table";
-  tabla.style.marginTop ="0.5in";
-  var body = document.getElementById("Tabla");
-  var tblBody = document.createElement("tbody");
-	  	//valores random desde 0 hasta 1000
+  $("#tableSolucion").show();
+  $("#tableSolucionBody").html("")	//valores random desde 0 hasta 1000
       for (var i = 0; i < list.length; i++) {
 		    // Crea las hileras de la tabla
 		    var hilera = document.createElement("tr");
@@ -178,14 +95,12 @@ function createTable(list){
 			      hilera.appendChild(celda);
 			    }
 
-		    // agrega la hilera al final de la tabla (al final del elemento tblbody)
-		    tblBody.appendChild(hilera);
+        // agrega la hilera al final de la tabla (al final del elemento tblbody)
+        $("#tableSolucionBody").append(hilera).appendTo("tableSolucion").appendTo("tablas")
       }
-      tabla.appendChild(tblBody);
-      body.appendChild(tabla);
 }
 function solucionar_tabla(){
-
+  $("#tableSolucion").hide();
 	var numFilas = document.getElementById('num_filas').value;
 		var numColumnas = document.getElementById('num_columnas').value;
 
@@ -200,7 +115,7 @@ function solucionar_tabla(){
 
 	my_liste = []
 	//obtener filas de la tabla
-	myData = document.getElementById('tablita').rows
+	myData = document.getElementById('tablaProblemaBody').rows
 	//llenar arreglo con informacion de la tabla:
 		for (var i = 0; i < myData.length; i++) {
 		            el = myData[i].children
@@ -239,13 +154,16 @@ function solucionar_tabla(){
 		    break;
 		  case 'hurwicz':
         console.log('Solucionar por '+metodo);
-
-		    	//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
+        let coeficionte = document.getElementById('coeficionte').value
+        let solucionarHurwi =  solucionarHurwics(my_liste,coeficionte)
+        this.createTable(my_liste)
+        $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + solucionarHurwi + '</div> </div>')
 		    break;
 		  case 'savage':
 		    console.log('Solucionar por '+metodo);
-			var savage = solucionarSavage(my_liste);
-			this.createTable(my_liste);
+			let savage = solucionarSavage(my_liste,numColumnas,numFilas);
+      this.createTable(my_liste);
+      $("#solucion").html('<div class="panel panel-default"> <div class="panel-body">La solucion más ' + metodo + ' : ' + savage + '</div> </div>')
 		   		//ingrese aqui el metodo que realiza el metodo y envie la matriz que se llenó
 		    break;
 		  default:
