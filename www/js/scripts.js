@@ -12,6 +12,7 @@ function init(){
 };
 
 function onSelectChange(event){
+  $("#tablas").hide()
 event.target.value == "hurwicz" ? $("#containerCcoeficionte").show() : $("#containerCcoeficionte").hide()
 }
 
@@ -101,6 +102,7 @@ function createTable(list){
 }
 function solucionar_tabla(){
   $("#tableSolucion").hide();
+  $("#tablas").show()
 	var numFilas = document.getElementById('num_filas').value;
 		var numColumnas = document.getElementById('num_columnas').value;
 
